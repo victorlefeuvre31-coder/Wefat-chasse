@@ -1,0 +1,115 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chasse au Trésor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      text-align: center;
+      background: url('d2648d41-bf45-4d2d-b26c-81c153b012e2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 48px;
+      margin: 0;
+      letter-spacing: 5px;
+      text-shadow: 2px 2px 8px black;
+      color: gold;
+    }
+
+    .container {
+      margin-top: 80px;
+      background: rgba(0, 0, 0, 0.6);
+      display: inline-block;
+      padding: 30px 50px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px black;
+    }
+
+    input {
+      font-size: 18px;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      width: 250px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: gold;
+      color: black;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: orange;
+    }
+
+    h2, p {
+      margin-top: 20px;
+      text-shadow: 2px 2px 6px black;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WEFArfadeT</h1>
+  </header>
+
+  <div class="container">
+    <h2>Découvre ton équipe !</h2>
+    <p>Entre ton nom :</p>
+    <input type="text" id="playerName" placeholder="Jean Dupont">
+    <button onclick="assignTeam()">Valider</button>
+
+    <h2 id="result"></h2>
+    <p id="start"></p>
+  </div>
+
+  <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbznpzT1uJuWxyahboSPaW4tz2nfnikjlF77nHTMlT8-kHmAi_OFJKAnItqPp9TOdTGk/exec";
+
+    function assignTeam() {
+      const name = document.getElementById('playerName').value.trim();
+      if (!name) return alert("Entre ton nom!");
+
+      fetch(`${WEB_APP_URL}?name=${encodeURIComponent(name)}`)
+        .then(res => res.json())
+        .then(data => {
+          if(data.ok){
+            document.getElementById('result').textContent = "Ton équipe : " + data.team;
+            document.getElementById('start').textContent = "Ta salle de départ : " + data.start;
+          } else {
+            document.getElementById('result').textContent = "Erreur : " + data.error;
+            document.getElementById('start').textContent = "";
+          }
+        })
+        .catch(err => {
+          document.getElementById('result').textContent = "Erreur, réessaye plus tard";
+          console.error(err);
+        });
+    }
+  </script>
+</body>
+</html>
+=======
+>>>>>>> 20700c2be99af3698d02f20d3a0d95baeda1ba26
